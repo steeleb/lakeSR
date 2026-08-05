@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Calculating intermission handoffs | AquaMatch: Lake Surface Reflectance (lakeSR) and Site Surface Reflectance (siteSR)</title>
   <meta name="description" content="Acquisition and compilation of satellite surface reflectance data for all lakes in the United States and US territories." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Calculating intermission handoffs | AquaMatch: Lake Surface Reflectance (lakeSR) and Site Surface Reflectance (siteSR)" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="ROSSyndicate" />
 
 
-<meta name="date" content="2026-01-23" />
+<meta name="date" content="2026-08-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -131,7 +131,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -274,6 +273,7 @@ div.csl-indent {
 <li class="chapter" data-level="8.5.2" data-path="define-handoff.html"><a href="define-handoff.html#gardner-correction-landsat-8-to-landsat-7"><i class="fa fa-check"></i><b>8.5.2</b> Gardner Correction Landsat 8 to Landsat 7</a></li>
 <li class="chapter" data-level="8.5.3" data-path="define-handoff.html"><a href="define-handoff.html#gardner-correction-landsat-7-to-landsat-8"><i class="fa fa-check"></i><b>8.5.3</b> Gardner Correction Landsat 7 to Landsat 8</a></li>
 </ul></li>
+<li class="chapter" data-level="8.6" data-path="define-handoff.html"><a href="define-handoff.html#examples-of-raw-and-applied-handoffs"><i class="fa fa-check"></i><b>8.6</b> Examples of Raw and Applied Handoffs</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
 </ul>
@@ -454,10 +454,10 @@ Band
 DSWE type
 </th>
 <th style="text-align:center;">
-<span style="     ">Satellite<br>to Correct</span>
+<span>Satellite<br>to Correct</span>
 </th>
 <th style="text-align:center;">
-<span style="     ">Satellite<br>to Harmonize to</span>
+<span>Satellite<br>to Harmonize to</span>
 </th>
 <th style="text-align:center;">
 Intercept
@@ -466,10 +466,10 @@ Intercept
 Slope
 </th>
 <th style="text-align:center;">
-<span style="     ">Minimum Value<br>in Handoff</span>
+<span>Minimum Value<br>in Handoff</span>
 </th>
 <th style="text-align:center;">
-<span style="     ">Maximum Value<br>in Handoff</span>
+<span>Maximum Value<br>in Handoff</span>
 </th>
 </tr>
 </thead>
@@ -488,30 +488,13 @@ LS5
 LS7
 </td>
 <td style="text-align:center;width: auto; ">
-0.001
+-0.001
 </td>
 <td style="text-align:center;width: auto; ">
-0.994
+1.006
 </td>
 <td style="text-align:center;width: auto; ">
--0.010
-</td>
-<td style="text-align:center;width: auto; ">
-0.195
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Green
-</td>
-<td style="text-align:center;width: auto; ">
-0.004
-</td>
-<td style="text-align:center;width: auto; ">
-1.025
-</td>
-<td style="text-align:center;width: auto; ">
--0.005
+-0.009
 </td>
 <td style="text-align:center;width: auto; ">
 0.199
@@ -519,16 +502,16 @@ med_Green
 </tr>
 <tr>
 <td style="text-align:left;width: auto; ">
-med_Red
+med_Green
 </td>
 <td style="text-align:center;width: auto; ">
-0.005
+-0.004
 </td>
 <td style="text-align:center;width: auto; ">
-0.984
+0.976
 </td>
 <td style="text-align:center;width: auto; ">
--0.009
+-0.004
 </td>
 <td style="text-align:center;width: auto; ">
 0.200
@@ -536,13 +519,13 @@ med_Red
 </tr>
 <tr>
 <td style="text-align:left;width: auto; ">
-med_Nir
+med_Red
 </td>
 <td style="text-align:center;width: auto; ">
-0.002
+-0.005
 </td>
 <td style="text-align:center;width: auto; ">
-1.016
+1.017
 </td>
 <td style="text-align:center;width: auto; ">
 -0.008
@@ -553,121 +536,16 @@ med_Nir
 </tr>
 <tr>
 <td style="text-align:left;width: auto; ">
-med_Swir1
+med_Nir
 </td>
 <td style="text-align:center;width: auto; ">
 -0.002
 </td>
 <td style="text-align:center;width: auto; ">
-1.360
-</td>
-<td style="text-align:center;width: auto; ">
--0.006
-</td>
-<td style="text-align:center;width: auto; ">
-0.098
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Swir2
-</td>
-<td style="text-align:center;width: auto; ">
--0.001
-</td>
-<td style="text-align:center;width: auto; ">
-1.360
-</td>
-<td style="text-align:center;width: auto; ">
--0.007
-</td>
-<td style="text-align:center;width: auto; ">
-0.082
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_SurfaceTemp
-</td>
-<td style="text-align:center;width: auto; ">
--7.348
-</td>
-<td style="text-align:center;width: auto; ">
-1.027
-</td>
-<td style="text-align:center;width: auto; ">
-273.150
-</td>
-<td style="text-align:center;width: auto; ">
-313.150
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Blue
-</td>
-<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="7">
-LS8
-</td>
-<td style="text-align:center;width: auto; ">
--0.010
-</td>
-<td style="text-align:center;width: auto; ">
-0.768
-</td>
-<td style="text-align:center;width: auto; ">
--0.008
-</td>
-<td style="text-align:center;width: auto; ">
-0.195
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Green
-</td>
-<td style="text-align:center;width: auto; ">
--0.009
-</td>
-<td style="text-align:center;width: auto; ">
-0.991
-</td>
-<td style="text-align:center;width: auto; ">
--0.006
-</td>
-<td style="text-align:center;width: auto; ">
-0.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Red
-</td>
-<td style="text-align:center;width: auto; ">
--0.009
-</td>
-<td style="text-align:center;width: auto; ">
-0.967
-</td>
-<td style="text-align:center;width: auto; ">
--0.008
-</td>
-<td style="text-align:center;width: auto; ">
-0.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Nir
-</td>
-<td style="text-align:center;width: auto; ">
--0.013
-</td>
-<td style="text-align:center;width: auto; ">
 0.985
 </td>
 <td style="text-align:center;width: auto; ">
--0.010
+-0.006
 </td>
 <td style="text-align:center;width: auto; ">
 0.200
@@ -676,262 +554,15 @@ med_Nir
 <tr>
 <td style="text-align:left;width: auto; ">
 med_Swir1
-</td>
-<td style="text-align:center;width: auto; ">
--0.001
-</td>
-<td style="text-align:center;width: auto; ">
-0.796
-</td>
-<td style="text-align:center;width: auto; ">
--0.005
-</td>
-<td style="text-align:center;width: auto; ">
-0.095
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Swir2
 </td>
 <td style="text-align:center;width: auto; ">
 0.001
 </td>
 <td style="text-align:center;width: auto; ">
-0.765
-</td>
-<td style="text-align:center;width: auto; ">
--0.006
-</td>
-<td style="text-align:center;width: auto; ">
-0.082
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_SurfaceTemp
-</td>
-<td style="text-align:center;width: auto; ">
--18.088
-</td>
-<td style="text-align:center;width: auto; ">
-1.068
-</td>
-<td style="text-align:center;width: auto; ">
-273.150
-</td>
-<td style="text-align:center;width: auto; ">
-313.030
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Blue
-</td>
-<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="14">
-DSWE1a
-</td>
-<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="7">
-LS5
-</td>
-<td style="text-align:center;width: auto; ">
-0.002
-</td>
-<td style="text-align:center;width: auto; ">
-0.971
-</td>
-<td style="text-align:center;width: auto; ">
--0.010
-</td>
-<td style="text-align:center;width: auto; ">
-0.195
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Green
-</td>
-<td style="text-align:center;width: auto; ">
-0.004
-</td>
-<td style="text-align:center;width: auto; ">
-1.013
-</td>
-<td style="text-align:center;width: auto; ">
--0.005
-</td>
-<td style="text-align:center;width: auto; ">
-0.199
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Red
-</td>
-<td style="text-align:center;width: auto; ">
-0.005
-</td>
-<td style="text-align:center;width: auto; ">
-0.962
-</td>
-<td style="text-align:center;width: auto; ">
--0.009
-</td>
-<td style="text-align:center;width: auto; ">
-0.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Nir
-</td>
-<td style="text-align:center;width: auto; ">
-0.003
-</td>
-<td style="text-align:center;width: auto; ">
-0.988
+0.735
 </td>
 <td style="text-align:center;width: auto; ">
 -0.008
-</td>
-<td style="text-align:center;width: auto; ">
-0.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Swir1
-</td>
-<td style="text-align:center;width: auto; ">
--0.001
-</td>
-<td style="text-align:center;width: auto; ">
-1.253
-</td>
-<td style="text-align:center;width: auto; ">
--0.006
-</td>
-<td style="text-align:center;width: auto; ">
-0.099
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Swir2
-</td>
-<td style="text-align:center;width: auto; ">
-0.000
-</td>
-<td style="text-align:center;width: auto; ">
-1.172
-</td>
-<td style="text-align:center;width: auto; ">
--0.007
-</td>
-<td style="text-align:center;width: auto; ">
-0.082
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_SurfaceTemp
-</td>
-<td style="text-align:center;width: auto; ">
--7.373
-</td>
-<td style="text-align:center;width: auto; ">
-1.027
-</td>
-<td style="text-align:center;width: auto; ">
-273.150
-</td>
-<td style="text-align:center;width: auto; ">
-313.150
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Blue
-</td>
-<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="7">
-LS8
-</td>
-<td style="text-align:center;width: auto; ">
--0.009
-</td>
-<td style="text-align:center;width: auto; ">
-0.736
-</td>
-<td style="text-align:center;width: auto; ">
--0.008
-</td>
-<td style="text-align:center;width: auto; ">
-0.195
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Green
-</td>
-<td style="text-align:center;width: auto; ">
--0.009
-</td>
-<td style="text-align:center;width: auto; ">
-0.994
-</td>
-<td style="text-align:center;width: auto; ">
--0.006
-</td>
-<td style="text-align:center;width: auto; ">
-0.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Red
-</td>
-<td style="text-align:center;width: auto; ">
--0.008
-</td>
-<td style="text-align:center;width: auto; ">
-0.962
-</td>
-<td style="text-align:center;width: auto; ">
--0.008
-</td>
-<td style="text-align:center;width: auto; ">
-0.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Nir
-</td>
-<td style="text-align:center;width: auto; ">
--0.017
-</td>
-<td style="text-align:center;width: auto; ">
-1.112
-</td>
-<td style="text-align:center;width: auto; ">
--0.010
-</td>
-<td style="text-align:center;width: auto; ">
-0.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: auto; ">
-med_Swir1
-</td>
-<td style="text-align:center;width: auto; ">
-0.000
-</td>
-<td style="text-align:center;width: auto; ">
-0.774
-</td>
-<td style="text-align:center;width: auto; ">
--0.005
 </td>
 <td style="text-align:center;width: auto; ">
 0.098
@@ -945,13 +576,13 @@ med_Swir2
 0.001
 </td>
 <td style="text-align:center;width: auto; ">
-0.719
+0.735
 </td>
 <td style="text-align:center;width: auto; ">
--0.006
+-0.007
 </td>
 <td style="text-align:center;width: auto; ">
-0.082
+0.084
 </td>
 </tr>
 <tr>
@@ -959,80 +590,23 @@ med_Swir2
 med_SurfaceTemp
 </td>
 <td style="text-align:center;width: auto; ">
--21.097
+7.148
 </td>
 <td style="text-align:center;width: auto; ">
-1.078
+0.973
 </td>
 <td style="text-align:center;width: auto; ">
 273.150
 </td>
 <td style="text-align:center;width: auto; ">
-313.030
+313.020
 </td>
 </tr>
-</tbody>
-</table>
-</div>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:roy-coeff-dem-corr8">Table 8.3: </span>Handoff coefficients for Landsat 5 and 8 to harmonize to Landsat 7 using the Roy method and Deming (MLE) regression
-</caption>
-<thead>
-<tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="4">
-</th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Coefficients
-</div>
-</th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Input Value Range
-</div>
-</th>
-</tr>
-<tr>
-<th style="text-align:left;">
-Band
-</th>
-<th style="text-align:center;">
-DSWE type
-</th>
-<th style="text-align:center;">
-<span style="     ">Satellite<br>to Correct</span>
-</th>
-<th style="text-align:center;">
-<span style="     ">Satellite<br>to Harmonize to</span>
-</th>
-<th style="text-align:center;">
-Intercept
-</th>
-<th style="text-align:center;">
-Slope
-</th>
-<th style="text-align:center;">
-<span style="     ">Minimum Value<br>in Handoff</span>
-</th>
-<th style="text-align:center;">
-<span style="     ">Maximum Value<br>in Handoff</span>
-</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td style="text-align:left;width: auto; ">
 med_Blue
 </td>
 <td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="7">
-DSWE1
-</td>
-<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="14">
-LS7
-</td>
-<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="14">
 LS8
 </td>
 <td style="text-align:center;width: auto; ">
@@ -1154,8 +728,133 @@ med_SurfaceTemp
 <td style="text-align:left;width: auto; ">
 med_Blue
 </td>
-<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="7">
+<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="14">
 DSWE1a
+</td>
+<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="7">
+LS5
+</td>
+<td style="text-align:center;width: auto; ">
+-0.002
+</td>
+<td style="text-align:center;width: auto; ">
+1.030
+</td>
+<td style="text-align:center;width: auto; ">
+-0.009
+</td>
+<td style="text-align:center;width: auto; ">
+0.199
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Green
+</td>
+<td style="text-align:center;width: auto; ">
+-0.004
+</td>
+<td style="text-align:center;width: auto; ">
+0.987
+</td>
+<td style="text-align:center;width: auto; ">
+-0.004
+</td>
+<td style="text-align:center;width: auto; ">
+0.200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Red
+</td>
+<td style="text-align:center;width: auto; ">
+-0.005
+</td>
+<td style="text-align:center;width: auto; ">
+1.040
+</td>
+<td style="text-align:center;width: auto; ">
+-0.008
+</td>
+<td style="text-align:center;width: auto; ">
+0.200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Nir
+</td>
+<td style="text-align:center;width: auto; ">
+-0.003
+</td>
+<td style="text-align:center;width: auto; ">
+1.012
+</td>
+<td style="text-align:center;width: auto; ">
+-0.006
+</td>
+<td style="text-align:center;width: auto; ">
+0.200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Swir1
+</td>
+<td style="text-align:center;width: auto; ">
+0.001
+</td>
+<td style="text-align:center;width: auto; ">
+0.798
+</td>
+<td style="text-align:center;width: auto; ">
+-0.008
+</td>
+<td style="text-align:center;width: auto; ">
+0.098
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Swir2
+</td>
+<td style="text-align:center;width: auto; ">
+0.000
+</td>
+<td style="text-align:center;width: auto; ">
+0.853
+</td>
+<td style="text-align:center;width: auto; ">
+-0.007
+</td>
+<td style="text-align:center;width: auto; ">
+0.084
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_SurfaceTemp
+</td>
+<td style="text-align:center;width: auto; ">
+7.173
+</td>
+<td style="text-align:center;width: auto; ">
+0.973
+</td>
+<td style="text-align:center;width: auto; ">
+273.150
+</td>
+<td style="text-align:center;width: auto; ">
+313.020
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Blue
+</td>
+<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="7">
+LS8
 </td>
 <td style="text-align:center;width: auto; ">
 0.012
@@ -1270,6 +969,307 @@ med_SurfaceTemp
 </td>
 <td style="text-align:center;width: auto; ">
 313.090
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:roy-coeff-dem-corr8">Table 8.3: </span>Handoff coefficients for Landsat 5 and 8 to harmonize to Landsat 7 using the Roy method and Deming (MLE) regression
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="4">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Coefficients
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Input Value Range
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Band
+</th>
+<th style="text-align:center;">
+DSWE type
+</th>
+<th style="text-align:center;">
+<span>Satellite<br>to Correct</span>
+</th>
+<th style="text-align:center;">
+<span>Satellite<br>to Harmonize to</span>
+</th>
+<th style="text-align:center;">
+Intercept
+</th>
+<th style="text-align:center;">
+Slope
+</th>
+<th style="text-align:center;">
+<span>Minimum Value<br>in Handoff</span>
+</th>
+<th style="text-align:center;">
+<span>Maximum Value<br>in Handoff</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Blue
+</td>
+<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="7">
+DSWE1
+</td>
+<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="14">
+LS7
+</td>
+<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="14">
+LS8
+</td>
+<td style="text-align:center;width: auto; ">
+-0.010
+</td>
+<td style="text-align:center;width: auto; ">
+0.768
+</td>
+<td style="text-align:center;width: auto; ">
+-0.008
+</td>
+<td style="text-align:center;width: auto; ">
+0.195
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Green
+</td>
+<td style="text-align:center;width: auto; ">
+-0.009
+</td>
+<td style="text-align:center;width: auto; ">
+0.991
+</td>
+<td style="text-align:center;width: auto; ">
+-0.006
+</td>
+<td style="text-align:center;width: auto; ">
+0.200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Red
+</td>
+<td style="text-align:center;width: auto; ">
+-0.009
+</td>
+<td style="text-align:center;width: auto; ">
+0.967
+</td>
+<td style="text-align:center;width: auto; ">
+-0.008
+</td>
+<td style="text-align:center;width: auto; ">
+0.200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Nir
+</td>
+<td style="text-align:center;width: auto; ">
+-0.013
+</td>
+<td style="text-align:center;width: auto; ">
+0.985
+</td>
+<td style="text-align:center;width: auto; ">
+-0.010
+</td>
+<td style="text-align:center;width: auto; ">
+0.200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Swir1
+</td>
+<td style="text-align:center;width: auto; ">
+-0.001
+</td>
+<td style="text-align:center;width: auto; ">
+0.796
+</td>
+<td style="text-align:center;width: auto; ">
+-0.005
+</td>
+<td style="text-align:center;width: auto; ">
+0.095
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Swir2
+</td>
+<td style="text-align:center;width: auto; ">
+0.001
+</td>
+<td style="text-align:center;width: auto; ">
+0.765
+</td>
+<td style="text-align:center;width: auto; ">
+-0.006
+</td>
+<td style="text-align:center;width: auto; ">
+0.082
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_SurfaceTemp
+</td>
+<td style="text-align:center;width: auto; ">
+-18.088
+</td>
+<td style="text-align:center;width: auto; ">
+1.068
+</td>
+<td style="text-align:center;width: auto; ">
+273.150
+</td>
+<td style="text-align:center;width: auto; ">
+313.030
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Blue
+</td>
+<td style="text-align:center;width: auto; vertical-align: middle !important;" rowspan="7">
+DSWE1a
+</td>
+<td style="text-align:center;width: auto; ">
+-0.009
+</td>
+<td style="text-align:center;width: auto; ">
+0.736
+</td>
+<td style="text-align:center;width: auto; ">
+-0.008
+</td>
+<td style="text-align:center;width: auto; ">
+0.195
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Green
+</td>
+<td style="text-align:center;width: auto; ">
+-0.009
+</td>
+<td style="text-align:center;width: auto; ">
+0.994
+</td>
+<td style="text-align:center;width: auto; ">
+-0.006
+</td>
+<td style="text-align:center;width: auto; ">
+0.200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Red
+</td>
+<td style="text-align:center;width: auto; ">
+-0.008
+</td>
+<td style="text-align:center;width: auto; ">
+0.962
+</td>
+<td style="text-align:center;width: auto; ">
+-0.008
+</td>
+<td style="text-align:center;width: auto; ">
+0.200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Nir
+</td>
+<td style="text-align:center;width: auto; ">
+-0.017
+</td>
+<td style="text-align:center;width: auto; ">
+1.112
+</td>
+<td style="text-align:center;width: auto; ">
+-0.010
+</td>
+<td style="text-align:center;width: auto; ">
+0.200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Swir1
+</td>
+<td style="text-align:center;width: auto; ">
+0.000
+</td>
+<td style="text-align:center;width: auto; ">
+0.774
+</td>
+<td style="text-align:center;width: auto; ">
+-0.005
+</td>
+<td style="text-align:center;width: auto; ">
+0.098
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_Swir2
+</td>
+<td style="text-align:center;width: auto; ">
+0.001
+</td>
+<td style="text-align:center;width: auto; ">
+0.719
+</td>
+<td style="text-align:center;width: auto; ">
+-0.006
+</td>
+<td style="text-align:center;width: auto; ">
+0.082
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: auto; ">
+med_SurfaceTemp
+</td>
+<td style="text-align:center;width: auto; ">
+-21.097
+</td>
+<td style="text-align:center;width: auto; ">
+1.078
+</td>
+<td style="text-align:center;width: auto; ">
+273.150
+</td>
+<td style="text-align:center;width: auto; ">
+313.030
 </td>
 </tr>
 </tbody>
@@ -1398,7 +1398,7 @@ is a 0 intercept, 0 slope line visual aide.</p>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:gard-coeff-corr7">Table 8.5: </span>Handoff coefficients for Landsat 5 and 8 to harmonize to Landsat 7 using the Deming (MLE) regression
+<span id="tab:gard-coeff-corr7">Table 8.5: </span>Handoff coefficients for Landsat 5 and 8 to harmonize to Landsat 7 using the Gardner polynomial method
 </caption>
 <thead>
 <tr>
@@ -1423,10 +1423,10 @@ Band
 DSWE type
 </th>
 <th style="text-align:center;">
-<span style="     ">Satellite<br>to Correct</span>
+<span>Satellite<br>to Correct</span>
 </th>
 <th style="text-align:center;">
-<span style="     ">Satellite<br>to Harmonize to</span>
+<span>Satellite<br>to Harmonize to</span>
 </th>
 <th style="text-align:center;">
 Intercept
@@ -1438,10 +1438,10 @@ B1
 B2
 </th>
 <th style="text-align:center;">
-<span style="     ">Minimum Value<br>in Handoff</span>
+<span>Minimum Value<br>in Handoff</span>
 </th>
 <th style="text-align:center;">
-<span style="     ">Maximum Value<br>in Handoff</span>
+<span>Maximum Value<br>in Handoff</span>
 </th>
 </tr>
 </thead>
@@ -2033,7 +2033,7 @@ med_SurfaceTemp
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:gard-coeff-corr8">Table 8.6: </span>Handoff coefficients for Landsat 5 and 8 to harmonize to Landsat 7 using the Deming (MLE) regression
+<span id="tab:gard-coeff-corr8">Table 8.6: </span>Handoff coefficients for Landsat 5 and 8 to harmonize to Landsat 7 using the Gardner polynomial method
 </caption>
 <thead>
 <tr>
@@ -2058,10 +2058,10 @@ Band
 DSWE type
 </th>
 <th style="text-align:center;">
-<span style="     ">Satellite<br>to Correct</span>
+<span>Satellite<br>to Correct</span>
 </th>
 <th style="text-align:center;">
-<span style="     ">Satellite<br>to Harmonize to</span>
+<span>Satellite<br>to Harmonize to</span>
 </th>
 <th style="text-align:center;">
 Intercept
@@ -2073,10 +2073,10 @@ B1
 B2
 </th>
 <th style="text-align:center;">
-<span style="     ">Minimum Value<br>in Handoff</span>
+<span>Minimum Value<br>in Handoff</span>
 </th>
 <th style="text-align:center;">
-<span style="     ">Maximum Value<br>in Handoff</span>
+<span>Maximum Value<br>in Handoff</span>
 </th>
 </tr>
 </thead>
@@ -2450,8 +2450,143 @@ intercept, 0 slope line visual aide.</p>
 <p><img src="images/gardner/handoffs/med_SurfaceTemp_LS7_to_LS8_DSWE1_gard_handoff.jpg" width="600" /></p>
 <p><img src="images/gardner/residuals/med_SurfaceTemp_LS7_to_LS8_DSWE1_gard_residuals.jpg" width="600" /></p>
 </details>
-
 </div>
+</div>
+<div id="examples-of-raw-and-applied-handoffs" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Examples of Raw and Applied Handoffs<a href="define-handoff.html#examples-of-raw-and-applied-handoffs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The previous sections describe how the intermission handoff coefficients are
+calculated and provide the coefficient tables and diagnostic figures for each
+method. Here we walk through what applying those coefficients actually looks
+like for a single, densely-sampled lakeSR record, across all seven bands and
+all four Landsat missions used in this pipeline (Landsat 5, 7, 8, and 9). We
+use <code>lakeSR_id</code> <code>1102_668</code> (“Nee Noshe Reservoir”, CO) for this example: it has
+a long, well-populated record across missions (hundreds of observations per
+mission over multiple decades) and, unlike many small or narrow waterbodies in
+lakeSR, it passes the shoreline flags used to fit the handoff coefficients, so
+we can filter it exactly as described in Section
+<a href="define-handoff.html#additional-filtering-applied">8.1</a> without losing the whole record.</p>
+<p>First, we grab this site’s location and shoreline flag information from the
+lakeSR point-of-interest file:</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:dense-example-location">Table 8.7: </span><span id="tab:dense-example-location">Table 8.8: </span>Location and shoreline flag information for the example lakeSR_id, pulled from the lakeSR point-of-interest file.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+lakeSR_id
+</th>
+<th style="text-align:left;">
+GNIS Name
+</th>
+<th style="text-align:right;">
+Area (sq. km)
+</th>
+<th style="text-align:right;">
+Latitude
+</th>
+<th style="text-align:right;">
+Longitude
+</th>
+<th style="text-align:right;">
+Optical Shoreline Flag
+</th>
+<th style="text-align:right;">
+TM Thermal Shoreline Flag
+</th>
+<th style="text-align:right;">
+ETM+ Thermal Shoreline Flag
+</th>
+<th style="text-align:right;">
+TIRS Thermal Shoreline Flag
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1102_668
+</td>
+<td style="text-align:left;">
+Nee Noshe Reservoir
+</td>
+<td style="text-align:right;">
+12.822
+</td>
+<td style="text-align:right;">
+38.339
+</td>
+<td style="text-align:right;">
+-102.694
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Next, we locate the DSWE1 feather files for Landsat 5, 7, 8, and 9 and pull
+the raw band data, QA columns, and scene id for this one site:</p>
+<p>Before applying the handoffs, we apply the same filtering used to calculate
+the coefficients themselves (see <code>calculate_roy_handoff()</code>,
+<code>calculate_gardner_handoff()</code>, and their upstream helpers <code>get_matches()</code> and
+<code>get_quantile_values()</code>, and Section <a href="define-handoff.html#additional-filtering-applied">8.1</a>):
+scenes with more than 50% cloud cover, any detected cloud in the buffered
+area, or a flagged minimum/maximum temperature are dropped, and optical or
+thermal band values are dropped entirely if this site is flagged for possible
+shoreline contamination in the relevant band group.</p>
+<table>
+<caption><span id="tab:dense-example-filter">Table 8.9: </span>Row counts per mission for lakeSR_id 1102_668 before and after the scene- and row-level QA filters.</caption>
+<thead>
+<tr class="header">
+<th align="left">sat_short</th>
+<th align="right">n_raw</th>
+<th align="right">n_after_qa_filters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">LS5</td>
+<td align="right">784</td>
+<td align="right">669</td>
+</tr>
+<tr class="even">
+<td align="left">LS7</td>
+<td align="right">601</td>
+<td align="right">518</td>
+</tr>
+<tr class="odd">
+<td align="left">LS8</td>
+<td align="right">334</td>
+<td align="right">284</td>
+</tr>
+<tr class="even">
+<td align="left">LS9</td>
+<td align="right">91</td>
+<td align="right">71</td>
+</tr>
+</tbody>
+</table>
+<p>Finally, we apply the Gardner and Roy Deming handoff coefficients (harmonized
+to Landsat 7, DSWE1) to the filtered data, using the same application logic
+described earlier in this chapter:</p>
+<p>The figure below compares the raw band time series against the two
+harmonized-to-LS7 versions for this site. If the handoffs are working well,
+the mission-to-mission offsets visible in the “Raw” column should be reduced
+in the “Gardner” and “Roy Deming” columns.</p>
+<p><img src="AquaMatch_lakeSR_files/figure-html/dense-example-plot-1.png" alt="" width="864" /></p>
+
 </div>
 </div>
             </section>
