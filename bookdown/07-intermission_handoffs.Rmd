@@ -510,9 +510,9 @@ intercept, 0 slope line visual aide.
 
 The previous sections describe how the intermission handoff coefficients are
 calculated and provide the coefficient tables and diagnostic figures for each
-method. Here we walk through what applying those coefficients actually looks
+method. Here, we walk through what applying those coefficients actually looks
 like for a single, densely-sampled lakeSR record, across all seven bands and
-all four Landsat missions used in this pipeline (Landsat 5, 7, 8, and 9). We
+four Landsat missions used in this pipeline (Landsat 5, 7, 8, and 9). We
 use `lakeSR_id` `1102_668` ("Nee Noshe Reservoir", CO) for this example: it has
 a long, well-populated record across missions (hundreds of observations per
 mission over multiple decades) and, unlike many small or narrow waterbodies in
@@ -530,7 +530,7 @@ repo_path <- function(path) file.path("..", path)
 ```
 
 First, we grab this site's location and shoreline flag information from the
-lakeSR point-of-interest file:
+lakeSR POI file:
 
 ```{r dense-example-location}
 dense_id <- "1102_668"
@@ -572,7 +572,7 @@ dense_raw <- map_dfr(dense_files, function(fp) {
     select(lakeSR_id, date, mission, sat_id, prop_clouds, flag_temp_min,
            flag_temp_max, all_of(band_cols)) %>%
     collect()
-}) %>%
+  }) %>%
   mutate(sat_short = paste0("LS", as.numeric(str_sub(mission, 3, 4))),
          # LS9 has no direct-to-LS7 coefficients; assume it shares LS8's
          # coefficients for the lookup below, same as elsewhere in this document
@@ -681,13 +681,14 @@ harmonized-to-LS7 versions for this site. If the handoffs are working well,
 the mission-to-mission offsets visible in the "Raw" column should be reduced
 in the "Gardner" and "Roy Deming" columns.
 
-```{r dense-example-plot, fig.width=9, fig.height=11}
+```{r dense-example-plot, fig.width=10, fig.height=11}
 ggplot(dense_plot_data, aes(x = date, y = value, color = sat_short)) +
   geom_point(alpha = 0.6, size = 1) +
   geom_line(aes(group = mission), alpha = 0.6) +
   facet_grid(band ~ correction, scales = "free_y") +
   labs(title = paste0("lakeSR_id: ", dense_id, " (", site_info$gnis_name, ")"),
        x = NULL, y = NULL, color = "Mission") +
+  theme(legend.position = "bottom") +
   theme_bw()
 ```
 

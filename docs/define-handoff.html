@@ -2456,9 +2456,9 @@ intercept, 0 slope line visual aide.</p>
 <h2><span class="header-section-number">8.6</span> Examples of Raw and Applied Handoffs<a href="define-handoff.html#examples-of-raw-and-applied-handoffs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The previous sections describe how the intermission handoff coefficients are
 calculated and provide the coefficient tables and diagnostic figures for each
-method. Here we walk through what applying those coefficients actually looks
+method. Here, we walk through what applying those coefficients actually looks
 like for a single, densely-sampled lakeSR record, across all seven bands and
-all four Landsat missions used in this pipeline (Landsat 5, 7, 8, and 9). We
+four Landsat missions used in this pipeline (Landsat 5, 7, 8, and 9). We
 use <code>lakeSR_id</code> <code>1102_668</code> (“Nee Noshe Reservoir”, CO) for this example: it has
 a long, well-populated record across missions (hundreds of observations per
 mission over multiple decades) and, unlike many small or narrow waterbodies in
@@ -2466,7 +2466,7 @@ lakeSR, it passes the shoreline flags used to fit the handoff coefficients, so
 we can filter it exactly as described in Section
 <a href="define-handoff.html#additional-filtering-applied">8.1</a> without losing the whole record.</p>
 <p>First, we grab this site’s location and shoreline flag information from the
-lakeSR point-of-interest file:</p>
+lakeSR POI file:</p>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -2585,7 +2585,7 @@ described earlier in this chapter:</p>
 harmonized-to-LS7 versions for this site. If the handoffs are working well,
 the mission-to-mission offsets visible in the “Raw” column should be reduced
 in the “Gardner” and “Roy Deming” columns.</p>
-<p><img src="AquaMatch_lakeSR_files/figure-html/dense-example-plot-1.png" alt="" width="864" /></p>
+<p><img src="AquaMatch_lakeSR_files/figure-html/dense-example-plot-1.png" alt="" width="960" /></p>
 
 </div>
 </div>
