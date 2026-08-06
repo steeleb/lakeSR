@@ -15,7 +15,7 @@ repo's [GitHub releases](https://github.com/AquaSat/AquaMatch_lakeSR/releases).
   data. All columns are now prefixed `early_`/`late_` at read-in, removing the
   ambiguity. Model x/y assignment was also corrected to consistently fit
   `sat_to ~ sat_corr`, so fitted coefficients apply forward without needing
-  inversion downstream. This matches the original intent of the Roy handoff calculation and mirrors the application for the Gardner handoff calculation.
+  inversion downstream. This matches the original intent of the Roy handoff calculation and mirrors the application for the Gardner handoff calculation. This impacted 42 lines of the handoff csv file.
 - All DSWE1 Roy handoff coefficients and diagnostic figures were recalculated
   as a result; values differ from the previous release.
 
