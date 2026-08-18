@@ -520,7 +520,7 @@ lakeSR, it passes the shoreline flags used to fit the handoff coefficients, so
 we can filter it exactly as described in Section
 \@ref(additional-filtering-applied) without losing the whole record.
 
-```{r dense-example-setup, echo = F}
+```{r dense-example-setup}
 library(arrow)
 
 # chapters are knit with the working directory set to bookdown/, but the
@@ -532,7 +532,7 @@ repo_path <- function(path) file.path("..", path)
 First, we grab this site's location and shoreline flag information from the
 lakeSR POI file:
 
-```{r dense-example-location}
+```{r dense-example-location, echo=TRUE}
 dense_id <- "1102_668"
 
 site_info <- a_poi_with_flags %>%
@@ -557,7 +557,7 @@ site_info %>%
 Next, we locate the DSWE1 feather files for Landsat 5, 7, 8, and 9 and pull
 the raw band data, QA columns, and scene id for this one site:
 
-```{r dense-example-raw}
+```{r dense-example-raw, echo=TRUE}
 band_cols <- c("med_Blue", "med_Green", "med_Red", "med_Nir",
                "med_Swir1", "med_Swir2", "med_SurfaceTemp")
 
@@ -588,7 +588,7 @@ area, or a flagged minimum/maximum temperature are dropped, and optical or
 thermal band values are dropped entirely if this site is flagged for possible
 shoreline contamination in the relevant band group.
 
-```{r dense-example-filter}
+```{r dense-example-filter, echo=TRUE}
 metadata_LS457 <- read_csv(
   repo_path(paste0("d_qa_filter_sort/sort/lakeSR_metadata_LS457_export_",
                     d_qa_version_identifier, ".csv")),
@@ -621,7 +621,12 @@ qa_summary <- dense_raw %>%
   count(sat_short, name = "n_raw") %>%
   left_join(dense_qa %>% count(sat_short, name = "n_after_qa_filters"), by = "sat_short")
 
-knitr::kable(qa_summary, caption = "Row counts per mission for lakeSR_id 1102_668 before and after the scene- and row-level QA filters.")
+qa_summary %>%
+  kable(
+    caption = "Row counts per mission for lakeSR_id 1102_668 before and after the scene- and row-level QA filters."
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  scroll_box(width = "100%")
 
 # pivot long and apply the band-level shoreline flags
 dense_long <- dense_qa %>%
@@ -637,7 +642,7 @@ Finally, we apply the Gardner and Roy Deming handoff coefficients (harmonized
 to Landsat 7, DSWE1) to the filtered data, using the same application logic
 described earlier in this chapter:
 
-```{r dense-example-apply}
+```{r dense-example-apply, echo=TRUE}
 gardner_coeffs <- e_collated_handoffs %>%
   filter(dswe == "DSWE1", sat_to == "LS7", correction == "Gardner")
 
