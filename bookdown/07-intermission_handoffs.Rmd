@@ -232,7 +232,7 @@ handoffs to the filtered lakeSR and siteSR data.
 
 <summary>Roy Deming Handoff and Residual Figures</summary>
 
-### Roy Deming Correction Landsat 5 to Landsat 7
+**Roy Deming Correction Landsat 5 to Landsat 7**
 
 For each of the handoff figures below, the blue line is the Deming (MLE)
 regression, the red dotted line is the OLS regression line, and the grey dashed
@@ -261,7 +261,7 @@ is a 0 intercept, 0 slope line visual aide.
 
 ![](images/roy/residuals/med_SurfaceTemp_LS5_to_LS7_DSWE1_roy_deming_residuals.jpg){width="600"}
 
-### Roy Deming Correction Landsat 8 to Landsat 7
+**Roy Deming Correction Landsat 8 to Landsat 7**
 
 For each of the handoff figures below, the blue solid line is the Deming (MLE)
 regression, the red line is the OLS regression line, and the grey dashed line is
@@ -290,7 +290,7 @@ intercept, 0 slope line visual aide.
 
 ![](images/roy/residuals/med_SurfaceTemp_LS8_to_LS7_DSWE1_roy_deming_residuals.jpg){width="600"}
 
-### Roy Deming Correction Landsat 7 to Landsat 8
+**Roy Deming Correction Landsat 7 to Landsat 8**
 
 For each of the handoff figures below, the blue solid line is the Deming (MLE)
 regression, the red dotted line is the OLS regression line, and the grey dashed
@@ -417,7 +417,7 @@ the filtered lakeSR and siteSR data.
 
 <summary>Gardner Handoff and Residual Figures relative to Landsat 7</summary>
 
-### Gardner Correction Landsat 5 to Landsat 7
+**Gardner Correction Landsat 5 to Landsat 7**
 
 For each of the handoff figures below, the red line is the second order
 polynomial regression and the grey dashed line is the 1:1 line. Coefficients for
@@ -446,7 +446,7 @@ intercept, 0 slope line visual aide.
 
 ![](images/gardner/residuals/med_SurfaceTemp_LS5_to_LS7_DSWE1_gard_residuals.jpg){width="600"}
 
-### Gardner Correction Landsat 8 to Landsat 7
+**Gardner Correction Landsat 8 to Landsat 7**
 
 For each of the handoff figures below, the red line is the second order
 polynomial regression and the grey dashed line is the 1:1 line. Coefficients for
@@ -475,7 +475,7 @@ intercept, 0 slope line visual aide.
 
 ![](images/gardner/residuals/med_SurfaceTemp_LS8_to_LS7_DSWE1_gard_residuals.jpg){width="600"}
 
-### Gardner Correction Landsat 7 to Landsat 8
+**Gardner Correction Landsat 7 to Landsat 8**
 
 For each of the handoff figures below, the red line is the second order
 polynomial regression and the grey dashed line is the 1:1 line. Coefficients for
@@ -506,7 +506,7 @@ intercept, 0 slope line visual aide.
 
 </details>
 
-## Examples of Raw and Applied Handoffs
+## Examples of Raw RS Data and RS with Handoffs Applied
 
 The previous sections describe how the intermission handoff coefficients are
 calculated and provide the coefficient tables and diagnostic figures for each
@@ -543,6 +543,7 @@ site_info %>%
          flag_optical_shoreline, flag_thermal_TM_shoreline,
          flag_thermal_ETM_shoreline, flag_thermal_TIRS_shoreline) %>%
   kable(
+    format = "html",
     digits = 3,
     col.names = c("lakeSR_id", "GNIS Name", "Area (sq. km)", "Latitude",
                   "Longitude", "Optical Shoreline Flag",
@@ -623,6 +624,7 @@ qa_summary <- dense_raw %>%
 
 qa_summary %>%
   kable(
+    format = "html",
     caption = "Row counts per mission for lakeSR_id 1102_668 before and after the scene- and row-level QA filters."
   ) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
